@@ -1,36 +1,41 @@
-# Sausage Store
+# Инструкция по запуску Sausage Store в Kubernetes
 
-![image](https://user-images.githubusercontent.com/9394918/121517767-69db8a80-c9f8-11eb-835a-e98ca07fd995.png)
+## Запуск приложения
 
+1. Убедитесь, что у вас установлены:
+   - kubectl
+   - helm
 
-## Technologies used
+2. Установите Helm-чарт:
+   ```bash
+   helm install sausage-store ./sausage-store-chart
+   ```
 
-* Frontend – TypeScript, Angular.
-* Backend  – Java 16, Spring Boot, Spring Data.
-* Database – H2.
+3. Проверьте, что все поды запустились:
+   ```bash
+   kubectl get pods
+   ```
 
-## Installation guide
-### Backend
+## Проверка работоспособности
 
-Install Java 16 and maven and run:
+1. Проверьте статус деплойментов:
+   ```bash
+   kubectl get deployments
+   ```
 
-```bash
-cd backend
-mvn package
-cd target
-java -jar sausage-store-0.0.1-SNAPSHOT.jar
-```
+2. Проверьте логи приложения:
+   ```bash
+   kubectl logs deployment/frontend
+   kubectl logs deployment/backend
+   kubectl logs deployment/backend-report
+   ```
 
-### Frontend
+3. Проверьте сервисы и ингрессы:
+   ```bash
+   kubectl get svc
+   kubectl get ingress
+   ```
 
-Install NodeJS and npm on your computer and run:
+## Доступ к приложению
 
-```bash
-cd frontend
-npm install
-npm run build
-npm install -g http-server
-sudo http-server ./dist/frontend/ -p 80 --proxy http://localhost:8080
-```
-
-Then open your browser and go to [http://localhost](http://localhost)
+Фронтенд доступен по URL: http://front-movsar.2sem.students-projects.ru

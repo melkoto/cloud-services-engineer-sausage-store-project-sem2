@@ -11,7 +11,7 @@ import (
 // Configuration contains static info required to run the apps
 // It contains DB info
 type Configuration struct {
-	Port                  string `env:"PORT" envDefault:"8080"`
+	Port                  string `env:"PORT" envDefault:"8082"`
 	DataBaseConnectionURL string `env:"DB,required"`
 }
 

@@ -27,7 +27,7 @@ import (
 // @contact.name API Support
 // @contact.email ypankaj007@gmail.com
 // @license.name Apache 2.0
-// @host localhost:8080
+// @host localhost:8082
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization

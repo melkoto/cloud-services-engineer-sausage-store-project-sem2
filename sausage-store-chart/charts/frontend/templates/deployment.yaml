@@ -39,10 +39,16 @@ spec:
             mountPath: /etc/nginx/{{ .Values.nginxConf }}
             subPath: {{ .Values.nginxConf }}
             readOnly: true
+          - name: {{ .Release.Name }}-{{ .Chart.Name }}-html
+            mountPath: /usr/share/nginx/html
+            readOnly: true
       volumes:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}-conf
           configMap:
             name: {{ .Release.Name }}-{{ .Chart.Name }}-conf
             items:
               - key: {{ .Values.nginxConf }}
-                path: {{ .Values.nginxConf }} 
+                path: {{ .Values.nginxConf }}
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}-html
+          configMap:
+            name: {{ .Release.Name }}-{{ .Chart.Name }}-html
